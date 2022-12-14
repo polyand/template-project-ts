@@ -1,7 +1,7 @@
 import { Cart } from 'pages/Cart';
 import { Home } from 'pages/Home';
 
-const routes = {
+const ROUTES = {
   '/': Home,
   '/cart': Cart,
 };
@@ -9,10 +9,12 @@ const routes = {
 export const router = () => {
   const rootElement = document.querySelector('#root');
   const url = window.location.hash.slice(1) || '/';
-  const route = routes[url];
+  const route = ROUTES[url];
+  console.log(route);
   const page = route();
 
   if (rootElement) {
+    rootElement.innerHTML = '';
     rootElement.appendChild(page);
   }
 };
