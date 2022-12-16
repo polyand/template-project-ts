@@ -20,7 +20,7 @@ const routes: Array<RoutesData> = [
 
 const error404: RoutesData = {
   data: Error404(),
-}
+};
 
 const root = document.getElementById('root');
 
