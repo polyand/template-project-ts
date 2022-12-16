@@ -1,32 +1,40 @@
 import { Cart } from 'pages/Cart';
 import { Home } from 'pages/Home';
+import { Error404 } from 'pages/Error404';
 
 type RoutesData = {
-  path: string;
   data: Element | null;
+  path?: string;
 };
 
 const routes: Array<RoutesData> = [
   {
-    path: '/',
     data: Home(),
+    path: '/',
   },
   {
-    path: '/cart',
     data: Cart(),
+    path: '/cart',
   },
 ];
+
+const error404: RoutesData = {
+  data: Error404(),
+}
 
 const root = document.getElementById('root');
 
 export function appendPage(): void {
   console.log(window.location.pathname);
-  const routex = routes.find((route) => route.path == window.location.pathname);
+  let route: RoutesData | undefined = routes.find((road) => road.path == window.location.pathname);
+  if (route === undefined) {
+    route = error404;
+  }
   if (root === null) {
     throw new Error();
   }
-  if (routex) {
-    const page = routex.data;
+  if (route) {
+    const page = route.data;
     if (page instanceof Node) {
       root.innerHTML = '';
       root.appendChild(page);
