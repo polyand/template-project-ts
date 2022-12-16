@@ -1,4 +1,5 @@
-import { router } from 'utils/router';
+import { appendPage, router } from 'utils/router';
 
-window.addEventListener('load', router);
-window.addEventListener('hashchange', router);
+window.addEventListener('click', router);
+window.addEventListener('popstate', appendPage);
+document.addEventListener('DOMContentLoaded', appendPage);

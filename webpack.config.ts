@@ -20,6 +20,7 @@ const devServer = (isDev) =>
             directory: srcPath,
             watch: true,
           },
+          historyApiFallback: true,    // ==================================== //
         },
       };
 
@@ -80,6 +81,7 @@ module.exports = ({ development }) => {
     context: srcPath,
     output: {
       filename: 'js/[name].[contenthash].js',
+      // publicPath: '/',    // ==================================== //
       path: path.resolve(__dirname, 'dist'),
       assetModuleFilename: '[file]',
     },
